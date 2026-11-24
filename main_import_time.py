@@ -1,5 +1,15 @@
 import time
 
+password = input("Enter a password made of numbers between 0 and 4: ")
+
+def time_attack():
+    guess = {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0
+    }
 # passwords = []
 # i = 0
 # while i < 4:
