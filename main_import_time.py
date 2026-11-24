@@ -1,8 +1,9 @@
 import time
+#from tracemalloc import start
 
 password = input("Enter a password made of numbers between 0 and 4: ")
 
-def time_attack():
+def time_attack(password):
     guess = {
         "0": 0,
         "1": 0,
@@ -10,57 +11,64 @@ def time_attack():
         "3": 0,
         "4": 0
     }
-    #Check all zeros
-    start = time.perf_counter()
-    if guess["0"] == password:
-        end = time.perf_counter()
-        guess["0"] += end - start
-    else:
-        end = time.perf_counter()
-        guess["0"] += end - start
+    i = 0
+    while i < 10000:
+        #Check all zeros
+        #start = time.perf_counter()
+        start0 = time.perf_counter_ns()
+        if "0" == password:
+            #end = time.perf_counter()
+            end0 = time.perf_counter_ns()
+            guess["0"] += end0 - start0
+        else:
+            end0 = time.perf_counter_ns()
+            guess["0"] += end0 - start0
+        
+
+        #Check all ones
+        start1 = time.perf_counter_ns()
+        if "1" == password:
+            end1 = time.perf_counter_ns()
+            guess["1"] += end1 - start1
+        else:
+            end1 = time.perf_counter_ns()
+            guess["1"] += end1 - start1
+
+        #Check all twos
+        start2 = time.perf_counter_ns()
+        if "2" == password:
+            end2 = time.perf_counter_ns()
+            guess["2"] += end2 - start2
+        else:
+            end2 = time.perf_counter_ns()
+            guess["2"] += end2 - start2
+        
+        #Check all threes
+        start3 = time.perf_counter_ns()
+        if "3" == password:
+            end3 = time.perf_counter_ns()
+            guess["3"] += end3 - start3
+        else:
+            end3 = time.perf_counter_ns()
+            guess["3"] += end3 - start3
+        
+        #Check all fours
+        start4 = time.perf_counter_ns()
+        if "4" == password:
+            end4 = time.perf_counter_ns()
+            guess["4"] += end4 - start4
+        else:
+            end4 = time.perf_counter_ns()
+            guess["4"] += end4 - start4
+        i += 1
+
     print(guess["0"])
-
-    #Check all ones
-    start = time.perf_counter()
-    if guess["1"] == password:
-        end = time.perf_counter()
-        guess["1"] += end - start
-    else:
-        end = time.perf_counter()
-        guess["1"] += end - start
     print(guess["1"])
-
-    #Check all twos
-    start = time.perf_counter()
-    if guess["2"] == password:
-        end = time.perf_counter()
-        guess["2"] += end - start
-    else:
-        end = time.perf_counter()
-        guess["2"] += end - start
     print(guess["2"])
-
-    #Check all threes
-    start = time.perf_counter()
-    if guess["3"] == password:
-        end = time.perf_counter()
-        guess["3"] += end - start
-    else:
-        end = time.perf_counter()
-        guess["3"] += end - start
-    print(guess["3"])
-
-    #Check all fours
-    start = time.perf_counter()
-    if guess["4"] == password:
-        end = time.perf_counter()
-        guess["4"] += end - start
-    else:
-        end = time.perf_counter()
-        guess["4"] += end - start
+    print(guess["3"])   
     print(guess["4"])
 
-time_attack()
+time_attack(password)
 # passwords = []
 # i = 0
 # while i < 4:
