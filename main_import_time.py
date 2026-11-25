@@ -14,14 +14,36 @@ def MeasureTime(password,i):
 
 def time_attack(password):
     guess = []
-    i = "0000"
+    i = "01234"
     n = 0
     while n <= 4:
-        times = timeit.repeat(lambda: MeasureTime(password,i), repeat=10000, number=10)
-        print(min(times))
+        #use timit to measure the time taken to check the password
+        times = timeit.repeat(lambda: MeasureTime(password,i), repeat=1000, number=1000)
+        #print(min(times))
         guess.append(min(times))
+        #print(i)
+        i = i[1:] + i[0] #move the first character to the end of the string
         n += 1
-
+    '''
+    TO DO List
+    -have the program know which number matches the shortest time
+    -Have program repeat the process with the correct number in the first position and the other numbers in the other positions
+    -Have the program store the guess in a list and then print the list at the end of the program
+    '''
+    #Now that the algorithm has found the first character of the password, start the process again with the new character added to the guess
+    n = 0
+    while n <= 4:
+            #use timit to measure the time taken to check the password
+            times = timeit.repeat(lambda: MeasureTime(password,i), repeat=1000, number=1000)
+            print(min(times))
+            guess.append(min(times))
+            print(i)
+            i = i[2:] + i[1] #move the second character to the end of the string
+            n += 1
+    
+    
+    
+    
     #i = 0
     # while i < 10000:
     #     #Check all zeros
